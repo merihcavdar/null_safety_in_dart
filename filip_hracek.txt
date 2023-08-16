@@ -1,0 +1,114 @@
+// null value => no value
+// ignore_for_file: unused_local_variable
+
+// null value can crash the app
+
+// Dart assumes that your variables are NEVER null.
+
+void main() {
+  var i = 42;
+  i = 0;
+  i = -1;
+
+  var message = 'Hello World';
+
+  var favoriteColor = Color(0x000000);
+  var favoriteColor = null;
+  setBackground(mary.favoriteColor);
+
+  showNumber(list[0]);
+
+  int age = 99;
+
+  // Types are non-nullable by default
+
+  Color? favoriteColor; // you have to be EXPLICIT about it.
+
+  // Dart and Swift are "Sounnd Null Safety"
+
+  print(fibonacci(10));
+
+}
+
+int fibonacci(int n) {
+  if (n <= 1) return 1;
+  return fibonacci(n-1) + fibonacci(n-2);
+}
+
+Question Mark applies to:
+1- variable definition
+Color? favoriteColor
+
+2- function parameters
+void setBackgroundColor(Color? color) {
+  // ...
+}
+
+3- function returns
+Color? chooseFavorite() {
+  //...
+}
+
+4- Generic Types
+List<Color?> favorites;
+
+void setBackground(Color? color) {
+  if (color == null) return; // => check manually if the value is null
+  if (color.computeLuminance() > 0.5) {
+    // ...
+  }
+}
+----
+void setBackground(Color? color) {  // function parameter either can be Color or null
+  //...
+}
+
+Color definitelyColor = Color(0xFF00FF);
+setBackground(definitelyColor);
+
+----
+void setBackground(Color color) { 
+  // ...
+}
+Color? maybeColor = 0xFF55FF;
+Color? maybeColor = null;
+setBackground(maybeColor); // => maybeColor is nullable, which cannot be assigned to...
+
+---
+Solution 1:
+void setBackground(Color color) { 
+  // ...
+}
+Color? maybeColor = getColor();
+
+if(maybeColor != null) {  // => make null check
+  setBackground(maybeColor);
+}
+
+---
+Solution 2:
+void setBackground(Color color) { 
+  // ...
+}
+Color? maybeColor = getColor();
+
+setBackground(maybeColor ?? black); // => if null, give alternative definite value
+
+---
+void setBackground(Color color) { 
+  // ...
+}
+Color? maybeColor = getColor();
+
+setBackground(maybeColor!); // => force
+
+---
+
+void setBackground(Color color) { 
+  // ...
+}
+Color? maybeColor = getColor();
+
+if(mandatoryColorPolicy.isActive) {
+  setBackground(maybeColor!);
+}

@@ -1,0 +1,35 @@
+there is an inputbox in the app which is represented as "favoriteCar" variable,
+the user left it blank
+and the app crush, as the inputbox returned "null"
+
+----
+Sound -> if type system determines that something is not null, then that thing can NEVER be null.
++
+smaller binaries
+faster execution
+----
+
+Null Safety -> Not having null values where you don't expect them. 
++
+Throws no null reference errors, if you're using null safety, with no explicitly unsafe features.
+
+----
+main() {
+  driveTwoSeatedCar('WCKD', null);
+}
+
+void driveTwoSeatedCar(String driver, [String? passenger]) {
+  if (passenger != null) {
+    print('$driver cruises with $passenger today!');
+  } else {
+    print('$driver will cruise alone today!');
+  }
+}
+
+double a = 5.0;
+double b = 4.0;
+print(a + b);
+
+double? c;
+double? d;
+print(c+d);
